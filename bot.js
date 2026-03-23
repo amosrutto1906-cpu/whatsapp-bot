@@ -6,18 +6,13 @@ async function startBot() {
 
     const sock = makeWASocket({
         auth: state,
-        printQRInTerminal: false
+        printQRInTerminal: true   // 🔥 THIS IS IMPORTANT
     })
 
     sock.ev.on("creds.update", saveCreds)
 
     sock.ev.on("connection.update", (update) => {
-        const { connection, qr } = update
-
-        if (qr) {
-            console.log("📲 Scan this QR code:")
-            qrcode.generate(qr, { small: false })
-        }
+        const { connection } = update
 
         if (connection === "open") {
             console.log("✅ Connected to WhatsApp")

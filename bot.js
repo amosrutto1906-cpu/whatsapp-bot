@@ -16,8 +16,9 @@ async function startBot() {
         const { connection, qr } = update
 
         if (qr) {
-            console.log("📱 Scan this QR code:")
-            qrcode.generate(qr, { small: true })
+    console.log("Scan this QR code:")
+    qrcode.generate(qr, { small: false })
+        }
         }
 
         if (connection === "open") {
